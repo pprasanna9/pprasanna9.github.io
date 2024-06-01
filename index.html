@@ -9,6 +9,7 @@
             <a class="active" href="#Chatbot" onclick="setActive(this)">Chatbot</a>
             <a href="#Contact" onclick="setActive(this)">Contact</a>
             <a href="#Hockey" onclick="setActive(this)">Hockey</a>
+            <a href="#Timeline" onclick="setActive(this)">Timeline</a>
         </div>
         
         <form action="results.html" method="get">
@@ -34,29 +35,40 @@
         </section>
 
         <section id="Hockey">
-            <h2>Hockey
-
-            </h2>
+            <h2>Hockey</h2>
             <p>I was born in Pittsburgh, but moved to Tampa in 2007, now I live in Atlanta. I missed the snow so my dad took me to an Ice Hockey rink and I have been playing ever since. I've played 4 years of Varsity Hockey, 2 years of USPHL Juniors, and 2 years of Georgia Tech Ice Hockey.</p>
             <img src="gthockey.jpg" alt="Logo" style="width: 100%; height: auto;">
         </section>
+
+        <section id="Timeline">
+            <h2>Timeline of Creating My Chatbot</h2>
+            <ul>
+                <li><strong>May 17th, 2024:</strong> Up till this point, I was getting tons of Discord messages and I wondered if there was a way I could develop a chatbot that could respond to these messages that sounded like me.</li>
+                <li><strong>May 18th, 2024:</strong> I did some research on how chatbots are created, and I came across this python library called transformers. There were some tutorials online on how to use this.</li>
+                <li><strong>May 18th - May 21st, 2024:</strong> The tutorials were hard to follow because they were outdated, and I had difficulty replicating what had been done in the tutorial, and this became a dead end.</li>
+                <li><strong>May 22nd, 2024:</strong> I decided to take a different approach through OpenAI APIs. This was fairly straightforward and I was able to replicate ChatGPT in a different UI. However, this was lacked one critical thing: my personality. I spent a couple hours trying to figure out how to personalize this new bot. This would fall short, and thus, another dead end.</li>
+                <li><strong>May 23rd, 2024:</strong> I knew there was some way to implement this chatbot that I was just missing, because I have seen many companies use AI assistants on their website. So I looked deeper in that direction and came across a type of bot called a staff training bot. There might be another name for this, but essentially these are chatbots with clean slates that are only taught information about their company, and can be used to assist employees. This is when I realized instead of giving this bot information about a company, I could give it information about myself.</li>
+                <li><strong>May 24, 2024:</strong> I did research on several bot developing platforms and came across Chatbase. Chatbase would only take in pdfs, docs, or txt files as an input to train the bot. This was an issue.</li>
+                <li><strong>May 25th, 2024:</strong> To make a bot talk like me, I needed data that would talk like me. This led me to the idea of downloading my past instagram messaging history. Instagram downloaded my messaging history in a .json format. However, due to Instagram security reasons, I was not able to access my chat history for 4 days.</li>
+                <li><strong>May 29th, 2024:</strong> I finally was given access to my messaging history in .json. I am familiar with traversing through .json as they are essentially massive dictionaries. I was able to write a python script that did 2 things. 1, check if the value in ["sender_name"] == "Pranay", and write the value in ["content"] into a txt file. Eventually this would give me a txt file with all my messages I have ever sent. <br>Keynote: I only ran this script on messaging history after 2021, because middle school me does not talk like how I talk today. This part was a little tricky, as Instagram gives the timestamp as "1704134199584". This might look like gibberish, but this is value is the number of milliseconds since January 1st, 1970, which is known as the Unix Epoch. By simply converting milliseconds to seconds and importing the datetime library, I was able to get a humanely readable timestamp to eliminate messages before 2021.</li>
+                <li><strong>May 30th, 2024:</strong> After I had this, I needed to do 2 things. Let's be honest, we have all said some unprofessional words to our friends before, especially in high school. So I needed to parse through my data and take out this words. While I was doing that, I also made sure to take our personal information about myself that I wouldn't want my bot sharing. Yes, I know, this bot is no longer a replica of me haha. With this done, I finally had my input I could use on chatbase.</li>
+                <li><strong>May 31st, 2024:</strong> This was a huge success, the bot was talking like me. However, it kind of sounded like a boomer who was trying to act young (my dad). To eliminate this, I spent countless hours training the bot by communicating with it and approving/disproving its answers.</li>
+                <li><strong>June 1st, 2024:</strong> I finally completed my personal chatbot, and I gave it to my friends and family and they all had good laughs out of it. Overall, this experience was great and I'm glad I got it to work.</li>
+            </ul>
+        </section>
         
         <footer style="display: flex; justify-content: center; align-items: center;">
-    
             <img src="GTVertical_RGB.png" alt="Logo" style="width: 200px; height: auto;">
         </footer>
 
         <script>
             function setActive(link) {
-        
                 var links = document.querySelectorAll('.topnav a');
                 links.forEach(function(item) {
                     item.classList.remove('active');
                 });
-
                 link.classList.add('active');
             }
         </script>
     </body>
-    
 </html>
